@@ -5,15 +5,18 @@
 let works = [];
 
 fetch('http://localhost:5678/api/works')
-    .then(res => res.json())
+    .then(res => {
+        if (res.ok) {
+            return res.json();
+        } else {
+            throw new Error('Il y a eu un problème avec l\'opération fetch : ' + error.message);
+        }
+    })
     .then(response => {
         works = response;
         loadingWorks(works);
-        console.log(works)
+        console.log(works);
     })
-    .catch(function(error) {
-        console.error('Il y a eu un problème avec l\'opération fetch : ' + error.message);
-    });
 
 function loadingWorks(works) {
     const gallery = document.querySelector(".gallery");

@@ -1,0 +1,62 @@
+.authentification {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 200px auto;
+}
+
+.authentification form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.authentification .email-range {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.authentification .password-range {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+form input[value="Se connecter"] {
+    margin: 0;
+    padding: 5px 15px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.email-range label {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.password-range label {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.password a[title="Mot de pas oublié"] {
+    text-align: center;
+    color: black;
+}
+
+.footerLogin nav ul {
+    /* position: absolute ; */
+    bottom: 0;
+    margin: 0;
+    /* width: 95%; */
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+	justify-content: flex-end;
+}

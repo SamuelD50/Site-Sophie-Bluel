@@ -1,3 +1,4 @@
+// Etape 2.2 : Authentification de l'utilisateur
 
 // Ecouter le submit du formulaire
 document.addEventListener("submit", (event) => {
@@ -25,7 +26,7 @@ document.addEventListener("submit", (event) => {
     .then(response => response.json())
     .then(data => {
         console.log(data) 
-        if(data.userId===1) {
+        if(data.userId>0) {
             // 2 info pour rester connecter
             window.localStorage.setItem("userId", data.userId);
             window.localStorage.setItem("token", data.token);

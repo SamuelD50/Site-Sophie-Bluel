@@ -1,0 +1,74 @@
+/* <div class="edition-bar-wrapper">
+	<div class="edition-bar-title">
+		<i class="fa-regular fa-pen-to-square"></i>
+		<span class="edition-way">
+			Mode édition
+		</span>
+	</div>
+	<a href="#modal1" class="js-modal" title="modale">
+		<button class="publish-changing">
+			publier les changements
+		</button>
+	</a>
+</div> */
+
+.edition-bar-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: black;
+    width: 100%;
+}
+
+.edition-bar-wrapper .edition-bar-title {
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    gap: 10px;
+}
+
+.edition-bar-wrapper .publish-changing {
+    color: black;
+    background-color: white;
+    border-radius: 25px;
+    padding: 12px 24px;
+    cursor: pointer;
+    margin: 10px;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* Outil modifier */
+
+.edition-tool .edition-tool-button {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+}
+
+/* .title-and-edition-tool {
+    display: flex;
+    flex-direction: row;
+} */
+.title-and-edition-tool {
+    position: relative;
+}
+
+.title-and-edition-tool .edition-tool-button {
+    position: absolute;
+    right: 340px;
+    bottom: 5px;
+}

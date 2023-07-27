@@ -75,11 +75,29 @@ filterHotelsAndRestaurants.addEventListener("click", function () {
     loadingWorks(categoryHotelsAndRestaurants);
 });
 
-// Etape 2 : Codez la page de connexion
+// // Formulaire de contact
+let form = document.querySelector("form");
 
-// Etape 2.1 : Intégration du design de la page de formulaire
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formRange = {
+        inputName : document.querySelector('input[name="name"]'),
+        inputEmail : document.querySelector('input[name="email"]'),
+        textareaMessage : document.querySelector('textarea[name="message"]'),
+        inputSubmit : document.querySelector('input[type="submit"]'),
+    }
+    console.log(formRange.inputName.value);
+    console.log(formRange.inputEmail.value);
+    console.log(formRange.textareaMessage.value);
+})
 
+// alert Votre message a bien été envoyé
 
+form.reset();
+
+function afficherEmail() {
+    let mailto = 'mailto:'
+}
 
 
 

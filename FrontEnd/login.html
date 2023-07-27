@@ -12,6 +12,7 @@
     </head>
     
     <body>
+
         <header>
             <h1>
                 Sophie Bluel 
@@ -46,19 +47,25 @@
         </header>
 
         <main>
+        <!-- Etape 2 : Codez la page de connexion -->
+        <!-- Etape 2.1 : Intégration du design de la page de formulaire -->
             <section class="authentification">
                 <h2>
                     Log In
                 </h2>
                 <form action="" method="post">
-                    <label for="email">
-                        E-mail
-                    </label>
-                    <input type="email" name="email" id="email" required>
-                    <label for="password">
-                        Mot de passe
-                    </label>
-                    <input type="text" name="password" id="password" required>
+                    <div class="email-range">
+                        <label for="email">
+                            E-mail
+                        </label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="password-range">
+                        <label for="password">
+                            Mot de passe
+                        </label>
+                        <input type="text" name="password" id="password" required>
+                    </div>
                     <input type="submit" value="Se connecter">
                 </form>
                 <span class="forgottenPassword">
@@ -79,5 +86,6 @@
 			</nav>
 		</footer>
         <script src="js/login.js"></script>
-    </body>  
+    </body> 
+     
 </html>

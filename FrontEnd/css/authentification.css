@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     gap: 30px;
-    margin: 200px auto;
+    margin: 25vh;
 }
 
 .authentification form {
@@ -51,11 +51,8 @@ form input[value="Se connecter"] {
 }
 
 .footerLogin nav ul {
-    /* position: absolute ; */
-    bottom: 0;
-    margin: 0;
-    /* width: 95%; */
-    height: 60px;
+    position: relative;
+    margin: 2em;
     display: flex;
     flex-direction: row;
 	justify-content: flex-end;

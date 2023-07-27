@@ -1,5 +1,6 @@
 footer nav ul {
 	display: flex;
+	flex-direction: row;
 	justify-content: flex-end;
 	margin: 2em;
 }

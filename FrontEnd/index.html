@@ -13,7 +13,7 @@
 	</head>
 
 	<body>
-		<div class="edition-bar-wrapper" style="display: none;">
+		<div class="edition-bar-wrapper">
 			<div class="edition-bar-title">
 				<i class="fa-regular fa-pen-to-square"></i>
 				<span class="edition-way">
@@ -43,9 +43,14 @@
                             contact
                         </a>
 					</li>
-					<li>
+					<li class="logIn">
 						<a href="login.html" title="Log In">
 							login
+						</a>
+					</li>
+					<li class="logOut" style="display: none;">
+						<a href="#" title="">
+							logout
 						</a>
 					</li>
 					<li>
@@ -56,54 +61,58 @@
 				</ul>
 			</nav>
 		</header>
+
 		<aside id="modal-wrapper" class="modal" aria-hidden="true" role="dialog" aria-labelledby="">
             <!-- Icones de navigation à rappeler dynamiquement sur chaque page -->
-            <div class="navigation-icons">
-                <button class="come-back">
-                    <i class="fa-solid fa-arrow-left"></i>
-                </button>
-                <button class="closing-modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-			<div class="modal1">
-                <h3 class="photo-gallery">
-                    Galerie photo
-                </h3>
-                <div class="icons-gallery-management">
-                    <!-- <i class="fa-solid fa-trash-can"></i>
-                    <i class="fa-solid fa-arrows-up-down-left-right"></i> -->
-                </div>
-                <span class="dividing-bar"></span>
-                <input type="submit" value="Ajouter une photo">
-                <input type="submit" value="Supprimer la galerie">
-            </div>
-			<div class="modal2" style="display: none">
-                <h3>
-                    Ajout photo
-                </h3>
-                <div class="space-for-adding-photo">
-                    <i class="fa-thin fa-image"></i>
-					<input type="file" accept=".jpg .png">
-                    <span class="format-weight-photo">
-                        jpg, png : 4mo max
-                    </span>
-					<img class="image-preview" src="" alt="Aperçu de la photo" style="display: none">
-                </div>
-                <label>
-                    Titre
-                </label>
-                <input type="text">
-                <label>
-                    Catégorie
-                </label>
-                <select>
-                    <option value="Objets">Objets</option>
-                    <option value="Appartements">Appartements</option>
-                    <option value="Hotels & restaurants">Hotels & restaurants</option>
-                </select>
-                <span class="dividing-bar"></span>
-                <input type="submit" value="Valider">
+
+			<div class="modal-content">
+				<div class="navigation-icons">
+					<button class="come-back">
+						<i class="fa-solid fa-arrow-left"></i>
+					</button>
+					<button class="closing-modal">
+						<i class="fa-solid fa-xmark"></i>
+					</button>
+				</div>
+				<div class="modal1">
+					<h3 class="photo-gallery">
+						Galerie photo
+					</h3>
+					<div class="gallery-management">
+						<!-- <i class="fa-solid fa-trash-can"></i>
+						<i class="fa-solid fa-arrows-up-down-left-right"></i> -->
+					</div>
+					<span class="dividing-bar"></span>
+					<input type="submit" value="Ajouter une photo">
+					<input type="submit" value="Supprimer la galerie">
+				</div>
+				<div class="modal2" style="display: none">
+					<h3>
+						Ajout photo
+					</h3>
+					<div class="space-for-adding-photo">
+						<i class="fa-thin fa-image"></i>
+						<input type="file" accept=".jpg .png">
+						<span class="format-weight-photo">
+							jpg, png : 4mo max
+						</span>
+						<img class="image-preview" src="" alt="Aperçu de la photo" style="display: none">
+					</div>
+					<label>
+						Titre
+					</label>
+					<input type="text">
+					<label>
+						Catégorie
+					</label>
+					<select>
+						<option value="Objets">Objets</option>
+						<option value="Appartements">Appartements</option>
+						<option value="Hotels & restaurants">Hotels & restaurants</option>
+					</select>
+					<span class="dividing-bar"></span>
+					<input type="submit" value="Valider">
+				</div>
             </div>
         </aside>
 
@@ -133,16 +142,12 @@
 					<h2>
 						Mes Projets
 					</h2>
-					<div class="edition-tool">
-						<a href="#modal1" class="js-modal" title="modale">
-							<button class="edition-tool-button">
-								<i class="fa-regular fa-pen-to-square"></i>
-								<span>
-									Mode édition
-								</span>
-							</button>
-						</a>
-					</div>
+					<button class="edition-tool-button">
+						<i class="fa-regular fa-pen-to-square"></i>
+						<span>
+							Mode édition
+						</span>
+					</button>
 				</div>
 				<div class="filter-bar">
 					<ul>
@@ -274,6 +279,6 @@
 		</footer>
 		
 		<script src="js\index.js"></script>
-		<!-- <script src="modale.js"></script> -->
+		<script src="js/modale.js"></script>
 	</body>
 </html>

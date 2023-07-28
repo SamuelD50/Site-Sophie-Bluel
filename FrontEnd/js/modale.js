@@ -1,46 +1,87 @@
-// const openModal = function (e) {
-//     e.preventDefault()
-//     const target = document.querySelector(e.target.getAttribute('href'))
-//     target.style.display = null
-//     target.removeAttribute('aria-hidden')
-//     target.setAttribute('aria-modal', 'true')
-// }
+// Afficher la modale
+function showModal() {
+    const modal = document.querySelector('.modal');
+    modal.style.display = 'block'
+}
 
-// const closeModale = function (e) {
-//     e.preventDefault()
-    
-// }
+const openModalButton1 = document.querySelector('.publish-changing');
+const openModalButton2 = document.querySelector('.edition-tool-button');
+openModalButton1.addEventListener("click", showModal);
+openModalButton2.addEventListener("click", showModal);
 
-// document.querySelectorAll('.js-modal').forEach(a => {
-//     a.addEventListener('click', openModal)
-    
-// })
+// Fermer la modale
 
-// document.querySelector(".closing-modal").forEach()
+function hideModal() {
+    const modal = document.querySelector('.modal');
+    modal.style.display = 'none';
+}
+
+const closeModalButton = document.querySelector('.fa-xmark');
+closeModalButton.addEventListener('click', hideModal);
+
+// Fermer la modale si clic en dehors
+window.addEventListener('click', function(event) {
+    const modal = document.querySelector('.modal');
+    if (event.target == modal) {
+        hideModal();
+    }
+});
+
 
 // Modale 1
 
-{/* <figure>
-						<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-						<figcaption>
-							Abajour Tahina
-						</figcaption>
-					</figure>
- */}
-function showEditionWay() {
 
+// function showEditionWay() {
 
+//     if(data.userId>0) {
+//         showEditionWay()
+//     }
+// }
 
+// if(data.userId>0) {
+//     logIn.style.display = 'flex'
+//     logOut.style.display = 'none'
+// } else {
+//     logIn.style.display = 'none'
+//     logOut.style.display = 'flex'
+// }
 
+let preview = [];
 
-    if(data.userId>0) {
-        showEditionWay()
+fetch('http://localhost:5678/api/works')
+    .then(res => {
+        if (res.ok) {
+            return res.json();
+        } else {
+            throw new Error('Il y a eu un problème avec l\'opération fetch : ' + error.message);
+        }
+    })
+    .then(response => {
+        preview = response;
+        loadingPreview(preview);
+        console.log(preview);
+    })
+
+function loadingPreview(preview) {
+    const galleryManagement = document.querySelector(".gallery-management");
+    for (let i = 0; i < preview.length; i++) {
+        const figure = document.createElement("figure");
+        const img = document.createElement("img");
+        const figcaption = document.createElement("figcaption");
+        img.src = preview[i].imageUrl;
+        figcaption.innerHTML = preview[i].title;
+        figure.appendChild(img);
+        figure.appendChild(figcaption);
+        galleryManagement.appendChild(figure);
     }
 }
 
-function GalleryManagement(){
+// const iconTrashCan = document.createElement('button');
 
-}
-
-
-
+// iconTrashCan.addEventListener("click", function() {
+//     fetch()
+//     method: 'DELETE',
+//         headers: {
+//             'Accept': 'application/json',
+// })
+// function GalleryManagement(){

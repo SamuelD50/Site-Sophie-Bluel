@@ -47,7 +47,7 @@
 
 /* Outil modifier */
 
-.edition-tool .edition-tool-button {
+.title-and-edition-tool .edition-tool-button {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -64,11 +64,18 @@
     flex-direction: row;
 } */
 .title-and-edition-tool {
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
 }
 
-.title-and-edition-tool .edition-tool-button {
-    position: absolute;
-    right: 340px;
-    bottom: 5px;
+.edition-tool-button {
+    margin-left: 10px;
+    margin-top: 6px;
+
+}
+
+.title-and-edition-tool h2 {
+    margin-left: 9%;
 }

@@ -13,7 +13,7 @@
 	</head>
 
 	<body>
-		<div class="edition-bar-wrapper">
+		<div class="edition-bar-wrapper" style="display: non;">
 			<div class="edition-bar-title">
 				<i class="fa-regular fa-pen-to-square"></i>
 				<span class="edition-way">
@@ -62,7 +62,7 @@
 			</nav>
 		</header>
 
-		<aside id="modal-wrapper" class="modal" aria-hidden="true" role="dialog" aria-labelledby="">
+		<div class="modal" style="display: none;">
             <!-- Icones de navigation à rappeler dynamiquement sur chaque page -->
 
 			<div class="modal-content">
@@ -79,8 +79,6 @@
 						Galerie photo
 					</h3>
 					<div class="gallery-management">
-						<!-- <i class="fa-solid fa-trash-can"></i>
-						<i class="fa-solid fa-arrows-up-down-left-right"></i> -->
 					</div>
 					<span class="dividing-bar"></span>
 					<input type="submit" value="Ajouter une photo">
@@ -114,7 +112,7 @@
 					<input type="submit" value="Valider">
 				</div>
             </div>
-        </aside>
+		</div>
 
 		<main>
 			<section id="introduction">
@@ -142,7 +140,7 @@
 					<h2>
 						Mes Projets
 					</h2>
-					<button class="edition-tool-button">
+					<button class="edition-tool-button" style="display: non;">
 						<i class="fa-regular fa-pen-to-square"></i>
 						<span>
 							Mode édition

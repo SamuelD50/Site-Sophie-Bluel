@@ -1,16 +1,4 @@
-/* <div class="edition-bar-wrapper">
-	<div class="edition-bar-title">
-		<i class="fa-regular fa-pen-to-square"></i>
-		<span class="edition-way">
-			Mode édition
-		</span>
-	</div>
-	<a href="#modal1" class="js-modal" title="modale">
-		<button class="publish-changing">
-			publier les changements
-		</button>
-	</a>
-</div> */
+
 
 .edition-bar-wrapper {
     display: flex;
@@ -79,3 +67,20 @@
 .title-and-edition-tool h2 {
     margin-left: 9%;
 }
+
+/* <div class="title-when-logout" style="display: none;">
+	    <h2>
+		    Mes Projets
+	    </h2>
+    </div>
+	<div class="title-and-edition-tool-when-login" style="display: none;">
+		<h2>
+			Mes Projets
+		</h2>
+		<button class="edition-tool">
+			<i class="fa-regular fa-pen-to-square"></i>
+				<span>
+				    Mode édition
+				</span>
+		</button>
+	</div> */

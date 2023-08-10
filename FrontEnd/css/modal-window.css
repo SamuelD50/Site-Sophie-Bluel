@@ -8,6 +8,8 @@ h3 {
 	font-size: 26px;
 	color: black;
     text-align: center;
+    padding: 20px;
+    font-family: Work Sans;
 }
 
 .modal {
@@ -37,7 +39,6 @@ h3 {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    padding: 40px;
 }
 
 .navigation-icons {
@@ -53,7 +54,8 @@ h3 {
     border: none;
     background-color: white;
     color: black;
-    cursor: pointer; 
+    cursor: pointer;
+    padding: 10px;
 }
 
 .dividing-bar {
@@ -67,7 +69,7 @@ h3 {
 }
 
 .modal1 input {
-    margin: 0;
+    margin: 0
 }
 
 .modal1 input[value="Ajouter une photo"] {
@@ -76,12 +78,22 @@ h3 {
     font-weight: 700;
     font-family: 'Syne';
     text-align: center;
+	color: white;
+	background-color: #1D6154;
+	margin : 10px;
+	width: 235px;
+	text-align: center;
+	border-radius: 60px ;
+	cursor: pointer;
 }
 
 .modal1 input[value="Supprimer la galerie"] {
     background-color: white;
+    font-weight: 400;
+    font-size: 14px;
     border: none;
     color: red;
+    font-family: 'Syne';
 }
 
 .gallery-management {
@@ -90,6 +102,7 @@ h3 {
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-column-gap: 10px;
 	grid-row-gap: 10px;
+    padding: 15px;
 }
 
 .gallery-management img {
@@ -107,20 +120,133 @@ h3 {
     width: 76px;
 }
 
+.gallery-management figure {
+    position: relative;
+}
+
 .fa-trash-can {
     color: white;
     background-color: black;
-    padding: 4px;
+    padding: 3px;
     border-radius: 2px;
     cursor: pointer;
-    position: relative;
+    position: absolute;
+    top: 3px;
+    right: 5px;
 }
 
 .fa-arrows-up-down-left-right {
     color: white;
     background-color: black;
-    padding: 4px;
+    padding: 3px;
     border-radius: 2px;
     cursor: pointer;
+    position: absolute;
+    top: 3px;
+    right: 30px;
+}
+
+.modal2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal2 .formModal2 {
+    gap: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal2 .space-for-adding-photo {
+    background-color: #E8F1F6;
+    width: 420px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.space-for-adding-photo .space-to-hide-after-loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 115px;
+}
+
+.space-to-hide-after-loading .fileToLoading {
+    cursor: pointer;
+    background-color: #CBD6DC;
+    color: #306685;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 30px;
+    margin: 15px;
+}
+
+.space-to-hide-after-loading .fa-image {
+    color: #B9C5CC;
+    padding: 30px;
+    font-size: 4em;
+}
+
+.space-to-hide-after-loading .format-weight-photo {
+    font-weight: 400;
+    font-size: 10px;
+    color: #444444;
+}
+
+.modal2 .title-and-category {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.modal2 .photo-title {
+    width: 420px;
+    height: 50px;
+    border: none;
+    box-shadow: 0px 4px 14px 0px #00000017;
+    font-size: 20px;
+}
+.title-and-category {
+    padding: 15px;
+}
+.title-and-category .label {
+    font-family: Work Sans;
+    font-size: 14px;
+    font-weight: 500;
+    color: #3D3D3D;
+}
+
+.modal2 .select-category {
+    width: 420px;
+    height: 50px;
+    border: none;
+    box-shadow: 0px 4px 14px 0px #00000017;
+    font-size: 20px;
+}
+
+.modal2 input[value="Valider"] {
+    padding: 10px 30px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Syne';
+    text-align: center;
+	color: white;
+	background-color: #1D6154;
+	margin : 10px;
+	width: 235px;
+	text-align: center;
+	border-radius: 60px ;
+	cursor: pointer;
+    margin: 20px;
 }
 

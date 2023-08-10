@@ -13,7 +13,7 @@
 	</head>
 
 	<body>
-		<div class="edition-bar-wrapper" style="display: non;">
+		<div class="edition-bar-wrapper">
 			<div class="edition-bar-title">
 				<i class="fa-regular fa-pen-to-square"></i>
 				<span class="edition-way">
@@ -48,8 +48,8 @@
 							login
 						</a>
 					</li>
-					<li class="logOut" style="display: none;">
-						<a href="#" title="">
+					<li class="logOut">
+						<a href="#" title="Log Out">
 							logout
 						</a>
 					</li>
@@ -68,10 +68,10 @@
 			<div class="modal-content">
 				<div class="navigation-icons">
 					<button class="come-back">
-						<i class="fa-solid fa-arrow-left"></i>
+						<i class="fa-solid fa-arrow-left fa-2xl"></i>
 					</button>
 					<button class="closing-modal">
-						<i class="fa-solid fa-xmark"></i>
+						<i class="fa-solid fa-xmark fa-2xl"></i>
 					</button>
 				</div>
 				<div class="modal1">
@@ -88,28 +88,45 @@
 					<h3>
 						Ajout photo
 					</h3>
-					<div class="space-for-adding-photo">
-						<i class="fa-thin fa-image"></i>
-						<input type="file" accept=".jpg .png">
-						<span class="format-weight-photo">
-							jpg, png : 4mo max
-						</span>
-						<img class="image-preview" src="" alt="Aperçu de la photo" style="display: none">
-					</div>
-					<label>
-						Titre
-					</label>
-					<input type="text">
-					<label>
-						Catégorie
-					</label>
-					<select>
-						<option value="Objets">Objets</option>
-						<option value="Appartements">Appartements</option>
-						<option value="Hotels & restaurants">Hotels & restaurants</option>
-					</select>
-					<span class="dividing-bar"></span>
-					<input type="submit" value="Valider">
+					<form method="post" class="formModal2">
+						<div class="space-for-adding-photo">
+							<div class="space-to-hide-after-loading">
+								<i class="fa-regular fa-image fa-2xl"></i>
+								<button class="fileToLoading">
+									<input type="file" accept=".jpg, .png" hidden>
+									+ Ajouter photo
+								</button>
+								<span class="format-weight-photo">
+									jpg, png : 4mo max
+								</span>
+							</div>
+						</div>
+						<div class="title-and-category">
+							<label>
+								Titre
+							</label>
+							<input class="photo-title" type="text">
+							<label>
+								Catégorie
+							</label>
+							<select class="select-category">
+								<option value="all-categories">
+									Toutes les catégories
+								</option>
+								<option value="Objects">
+									Objets
+								</option>
+								<option value="Apartments">
+									Appartements
+								</option>
+								<option value="Hotels-and-restaurants">
+									Hotels & restaurants
+								</option>
+							</select>
+						</div>
+						<span class="dividing-bar"></span>
+						<input type="submit" value="Valider">
+					</form>
 				</div>
             </div>
 		</div>
@@ -276,7 +293,8 @@
 			</nav>
 		</footer>
 		
-		<script src="js\index.js"></script>
+		<script src="js/index.js"></script>
+		<script src="js/login.js"></script>
 		<script src="js/modale.js"></script>
 	</body>
 </html>

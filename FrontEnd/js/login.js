@@ -14,6 +14,19 @@ document.addEventListener("submit", (event) => {
 
     // Token Bearer
 
+    function logIn() {
+        const filterBar = document.querySelector('.filter-bar ul');
+        const logIn = document.querySelector('.logIn')
+        const logOut = document.querySelector('.logOut')
+        const editionBar = document.querySelector('.edition-bar-wrapper')
+        const editionToolButton = document.querySelector('.edition-tool-button')                                                                                                        
+        filterBar.style.display = "none";
+        logIn.style.display = "none";
+        logOut.style.display = "flex";
+        editionBar.style.display = "flex";
+        editionToolButton.style.display = "flex";
+    }
+
     // Utilisation de fetch avec la méthode Post
     fetch('http://localhost:5678/api/users/login', {
         method: 'POST',
@@ -26,14 +39,14 @@ document.addEventListener("submit", (event) => {
     .then(response => response.json())
     .then(data => {
         console.log(data) 
-        if(data.userId>0) {
+        if(data.userId>=0) {
             // 2 info pour rester connecter
             window.localStorage.setItem("userId", data.userId);
             window.localStorage.setItem("token", data.token);
             console.log(data.userId)
             console.log(data.token)
             window.location.href='index.html';
-            return alert('Bienvenue');
+            return logIn()
             // Enregistrer userId et son token en local
         } else {
             console.log(data.userId)
@@ -44,6 +57,13 @@ document.addEventListener("submit", (event) => {
 });
 
 
-// Identifiants incorrects
-// Utilisateur non enregistré
-//
+
+
+// logIn.addEventListener("click", function() {
+//     filterBar.style.display = "none";
+//     logIn.style.display = "none";
+//     logOut.style.display = "flex";
+//     editionBar.style.display = "flex";
+//     editionToolButton.style.display = "flex";
+// })
+

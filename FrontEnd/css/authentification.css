@@ -28,11 +28,17 @@
     gap: 10px;
 }
 
-form input[value="Se connecter"] {
+input[value="Se connecter"] {
     margin: 0;
-    padding: 5px 15px;
+    padding: 10px 30px;
     font-size: 14px;
     font-weight: 700;
+    border-radius: 60px;
+    color: white;
+    background-color: #1D6154;
+    font-family: Syne;
+    text-align: center;
+    cursor: pointer;
 }
 
 .email-range label {
@@ -45,7 +51,7 @@ form input[value="Se connecter"] {
     font-weight: 500;
 }
 
-.password a[title="Mot de pas oublié"] {
+.password a[title="Mot de passe oublié"] {
     text-align: center;
     color: black;
 }

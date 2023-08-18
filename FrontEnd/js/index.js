@@ -9,7 +9,7 @@ fetch('http://localhost:5678/api/works')
         if (res.ok) {
             return res.json();
         } else {
-            throw new Error('Il y a eu un problème avec l\'opération fetch : ' + error.message);
+            throw new Error('There was a problem with the fetch operation');
         }
     })
     .then(response => {
@@ -74,32 +74,3 @@ filterHotelsAndRestaurants.addEventListener("click", function () {
     document.querySelector(".gallery").innerHTML ="";
     loadingWorks(categoryHotelsAndRestaurants);
 });
-
-// // Formulaire de contact
-let form = document.querySelector("form");
-
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const formRange = {
-        inputName : document.querySelector('input[name="name"]'),
-        inputEmail : document.querySelector('input[name="email"]'),
-        textareaMessage : document.querySelector('textarea[name="message"]'),
-        inputSubmit : document.querySelector('input[type="submit"]'),
-    }
-    console.log(formRange.inputName.value);
-    console.log(formRange.inputEmail.value);
-    console.log(formRange.textareaMessage.value);
-})
-
-// alert Votre message a bien été envoyé
-
-form.reset();
-
-function afficherEmail() {
-    let mailto = 'mailto:'
-}
-
-
-
-
-

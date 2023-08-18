@@ -1,31 +1,22 @@
 // Etape 2.2 : Authentification de l'utilisateur
 
-// Ecouter le submit du formulaire
-document.addEventListener("submit", (event) => {
-    event.preventDefault();
+// Si l'utilisateur a accès à cette page, cela veut dire qu'il est déconnecté
+localStorage.setItem("userId", false)
+
+const formInput = document.querySelector('.form-input')
+
+// Au clic sur le bouton Se connecter, vérification des identifiants de connexion
+formInput.addEventListener("submit", (event) => {
+    event.preventDefault()
+
     const user = {
-    email : document.querySelector('input[name="email"]').value,
-    password : document.querySelector('input[name="password"]').value,
+    email: document.querySelector('input[name="email"]').value,
+    password: document.querySelector('input[name="password"]').value,
     };
 
     // Test pour savoir si je récupère bien les infos entrées
     console.log(user.email);
     console.log(user.password);
-
-    // Token Bearer
-
-    function logIn() {
-        const filterBar = document.querySelector('.filter-bar ul');
-        const logIn = document.querySelector('.logIn')
-        const logOut = document.querySelector('.logOut')
-        const editionBar = document.querySelector('.edition-bar-wrapper')
-        const editionToolButton = document.querySelector('.edition-tool-button')                                                                                                        
-        filterBar.style.display = "none";
-        logIn.style.display = "none";
-        logOut.style.display = "flex";
-        editionBar.style.display = "flex";
-        editionToolButton.style.display = "flex";
-    }
 
     // Utilisation de fetch avec la méthode Post
     fetch('http://localhost:5678/api/users/login', {
@@ -38,32 +29,16 @@ document.addEventListener("submit", (event) => {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data) 
-        if(data.userId>=0) {
+        if(data.userId >= 0) {
             // 2 info pour rester connecter
-            window.localStorage.setItem("userId", data.userId);
+            window.localStorage.setItem("userId", true);
             window.localStorage.setItem("token", data.token);
-            console.log(data.userId)
-            console.log(data.token)
-            window.location.href='index.html';
-            return logIn()
+            window.location.href = "index.html";
             // Enregistrer userId et son token en local
         } else {
             console.log(data.userId)
             console.log(data.token)
-            return alert('Not authorized/User not found');  
+            return alert('Connection attempt failed');  
         }
     })
 });
-
-
-
-
-// logIn.addEventListener("click", function() {
-//     filterBar.style.display = "none";
-//     logIn.style.display = "none";
-//     logOut.style.display = "flex";
-//     editionBar.style.display = "flex";
-//     editionToolButton.style.display = "flex";
-// })
-

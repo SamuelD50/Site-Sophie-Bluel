@@ -13,6 +13,7 @@
 	</head>
 
 	<body>
+		<!-- Affichage de la barre d'édition lorsque l'utilisateur est connecté -->
 		<div class="edition-bar-wrapper">
 			<div class="edition-bar-title">
 				<i class="fa-regular fa-pen-to-square"></i>
@@ -24,6 +25,7 @@
 				publier les changements
 			</button>
 		</div>
+
 		<header>
 			<h1>
 				Sophie Bluel 
@@ -31,6 +33,7 @@
 					Architecte d'intérieur
 				</span>
 			</h1>
+			<!-- Menu avec les liens vers les différentes pages du site -->
 			<nav>
 				<ul>
 					<li>
@@ -62,10 +65,11 @@
 			</nav>
 		</header>
 
-		<div class="modal" style="display: none;">
+		<!-- Ajout de la modale -->
+		<div class="modal">
             <!-- Icones de navigation à rappeler dynamiquement sur chaque page -->
-
 			<div class="modal-content">
+				<!-- Icones de navigation à rappeler dynamiquement sur chaque modale -->
 				<div class="navigation-icons">
 					<button class="come-back">
 						<i class="fa-solid fa-arrow-left fa-2xl"></i>
@@ -74,6 +78,7 @@
 						<i class="fa-solid fa-xmark fa-2xl"></i>
 					</button>
 				</div>
+				<!-- Modale permettant de gérer la galerie -->
 				<div class="modal1">
 					<h3 class="photo-gallery">
 						Galerie photo
@@ -84,7 +89,8 @@
 					<input type="submit" value="Ajouter une photo">
 					<input type="submit" value="Supprimer la galerie">
 				</div>
-				<div class="modal2" style="display: none">
+				<!-- Modale permettant d'ajouter du contenu à la galerie -->
+				<div class="modal2">
 					<h3>
 						Ajout photo
 					</h3>
@@ -93,7 +99,6 @@
 							<div class="space-to-hide-after-loading">
 								<i class="fa-regular fa-image fa-2xl"></i>
 								<button class="fileToLoading">
-									<input type="file" accept=".jpg, .png" hidden>
 									+ Ajouter photo
 								</button>
 								<span class="format-weight-photo">
@@ -110,16 +115,16 @@
 								Catégorie
 							</label>
 							<select class="select-category">
-								<option value="all-categories">
+								<option value="0">
 									Toutes les catégories
 								</option>
-								<option value="Objects">
+								<option value="1">
 									Objets
 								</option>
-								<option value="Apartments">
+								<option value="2">
 									Appartements
 								</option>
-								<option value="Hotels-and-restaurants">
+								<option value="3">
 									Hotels & restaurants
 								</option>
 							</select>
@@ -153,41 +158,44 @@
 			</section>
 			
 			<section id="portfolio">
+				<!-- Gestion du titre h2 et du bouton selon que l'utilisateur soit connecté ou non -->
 				<div class="title-and-edition-tool">
 					<h2>
 						Mes Projets
 					</h2>
-					<button class="edition-tool-button" style="display: non;">
+					<button class="edition-tool-button">
 						<i class="fa-regular fa-pen-to-square"></i>
 						<span>
 							Mode édition
 						</span>
 					</button>
 				</div>
+				<!-- Barre de filtres selon la catégorie -->
 				<div class="filter-bar">
 					<ul>
 						<li>
-							<button class="filter-all-works">
+							<button class="filter-all-works" value="0">
 								Tous
 							</button>
 						</li>
 						<li>
-							<button class="filter-objects">
+							<button class="filter-objects" value="1">
 								Objets
 							</button>
 						</li>
 						<li>
-							<button class="filter-apartments">
+							<button class="filter-apartments" value="2">
 								Appartements
 							</button>
 						</li>
 						<li>
-							<button class="filter-hotels-and-restaurants">
+							<button class="filter-hotels-and-restaurants" value="3">
 								Hôtels & restaurants
 							</button>
 						</li>
 					</ul>
 				</div>
+				<!-- Galerie récupérée dynamiquement via JavaScript -->
 				<div class="gallery">
 					<!-- <figure>
 						<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
@@ -265,7 +273,7 @@
 				<p>
 					Vous avez un projet ? Discutons-en !
 				</p>
-				<form action="mailto:duflos.samuel@gmail.com?subject=Formulaire Sophie Bluel" method="post" enctype="text/plain">
+				<form action="#" method="post">
 					<label for="name">
 						Nom
 					</label>
@@ -294,7 +302,6 @@
 		</footer>
 		
 		<script src="js/index.js"></script>
-		<script src="js/login.js"></script>
 		<script src="js/modale.js"></script>
 	</body>
 </html>

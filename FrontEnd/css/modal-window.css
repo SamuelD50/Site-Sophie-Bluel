@@ -14,7 +14,7 @@ h3 {
 
 .modal {
     position: fixed;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     top: 0;
@@ -147,7 +147,7 @@ h3 {
 }
 
 .modal2 {
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 
@@ -182,6 +182,7 @@ h3 {
     background-color: #CBD6DC;
     color: #306685;
     border-radius: 50px;
+    border: none;
     font-weight: 500;
     font-size: 14px;
     text-align: center;

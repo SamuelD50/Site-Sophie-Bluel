@@ -98,23 +98,37 @@
 						<div class="space-for-adding-photo">
 							<div class="space-to-hide-after-loading">
 								<i class="fa-regular fa-image fa-2xl"></i>
-								<button class="fileToLoading">
+								<input class="fileToLoading" type="file" accept=".jpg, .png, .jpeg" required>
+								<label for="fileToLoading">
 									+ Ajouter photo
-								</button>
+								</label>
+								<span class="tooltip1">
+									* Champ requis
+								</span>
 								<span class="format-weight-photo">
 									jpg, png : 4mo max
 								</span>
 							</div>
 						</div>
 						<div class="title-and-category">
-							<label>
-								Titre
-							</label>
-							<input class="photo-title" type="text">
-							<label>
-								Catégorie
-							</label>
-							<select class="select-category">
+							<div class="title-and-range">
+								<label>
+									Titre
+								</label>
+								<span class="tooltip2">
+									* Champ requis
+								</span>
+							</div>
+							<input class="photo-title" type="text" required>
+							<div class="category-and-range">
+								<label>
+									Catégorie
+								</label>
+								<span class="tooltip3">
+									* Champ requis
+								</span>
+							</div>
+							<select class="select-category" required>
 								<option value="0">
 									Toutes les catégories
 								</option>

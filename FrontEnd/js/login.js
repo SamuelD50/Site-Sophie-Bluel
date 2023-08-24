@@ -36,8 +36,6 @@ formInput.addEventListener("submit", (event) => {
             window.location.href = "index.html";
             // Enregistrer userId et son token en local
         } else {
-            console.log(data.userId)
-            console.log(data.token)
             return alert('Connection attempt failed');  
         }
     })

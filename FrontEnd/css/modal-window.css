@@ -94,6 +94,7 @@ h3 {
     border: none;
     color: red;
     font-family: 'Syne';
+    cursor: pointer;
 }
 
 .gallery-management {
@@ -110,6 +111,12 @@ h3 {
 }
 
 .gallery-management .inputGallery {
+    border: none;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.gallery-management .newInputPreview {
     border: none;
     font-size: 12px;
     font-weight: 400;

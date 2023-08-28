@@ -22,15 +22,19 @@ function loadingWorks(works) {
     const gallery = document.querySelector(".gallery");
     for (let i = 0; i < works.length; i++) {
         const figure = document.createElement("figure");
+        // figure.className = 'gallery-figure'
         const img = document.createElement("img");
         const figcaption = document.createElement("figcaption");
         img.src = works[i].imageUrl;
         figcaption.innerHTML = works[i].title;
+        figure.setAttribute('data-id', works[i].id)
+        console.log(works[i].id)
         figure.appendChild(img);
         figure.appendChild(figcaption);
         gallery.appendChild(figure);
     }
 }
+
 
 // Etape 1.2 : Réalisation du filtre des travaux
 

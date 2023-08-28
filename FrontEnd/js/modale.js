@@ -34,13 +34,14 @@ function hideModal() {
     checkValidity()
 }
 
-const closeModalButton = document.querySelector('.fa-xmark');
+const closeModalButton = document.getElementById("xmark");
 closeModalButton.addEventListener('click', hideModal);
 
 // Fermer la modale si clic en dehors
 
-window.addEventListener('click', function(event) {
-    if (event.target == modal) {
+modal.addEventListener('click', function(event) {
+
+    if (event.target === modal) {
         hideModal();
         formModal2.reset();
         if (previewPicture !== null) {
@@ -82,7 +83,8 @@ logOut.addEventListener("click", function() {
 })
         
 // Flèche pour revenir en arrière. Disponible uniquement sur modale 2
-const returnButton = document.querySelector('.fa-arrow-left');
+const returnButton = document.getElementById("arrow");
+console.log(returnButton)
 
 returnButton.addEventListener('click', function() {
     modal2.style.display = "none";
@@ -146,6 +148,8 @@ selectCategory.addEventListener('change', checkValidity)
 spaceToHideAfterLoading.addEventListener('click', checkValidity)
 
 // Générer tous les travaux dans l'espace de prévisualisation de la modale 1
+const galleryManagement = document.querySelector(".gallery-management");
+
 let preview = [];
 
 fetch('http://localhost:5678/api/works')
@@ -157,7 +161,6 @@ fetch('http://localhost:5678/api/works')
         }
     })
     .then(preview => {
-        const galleryManagement = document.querySelector(".gallery-management");
         
         preview.forEach(element => {
             const figure = document.createElement("figure");
@@ -182,6 +185,7 @@ fetch('http://localhost:5678/api/works')
             iconTrashCan.className = "fa-solid fa-trash-can";
             iconTrashCan.addEventListener("click", function(event) {
                 event.preventDefault();
+
                 fetch('http://localhost:5678/api/works/' + element.id, {
                     method: 'DELETE',
                     headers: {
@@ -192,7 +196,14 @@ fetch('http://localhost:5678/api/works')
                 .then(response => {
                     if (!response.ok) {
                         console.error("Deletion failed");
-                    }     
+                    } else {
+                        figure.remove();
+                        
+                        const figuresInGallery = document.querySelectorAll('.gallery figure[data-id="' + element.id + '"]');
+                        figuresInGallery.forEach(figure => {
+                            figure.remove();
+                        });
+                    }    
                 })
             })
 
@@ -211,7 +222,14 @@ fetch('http://localhost:5678/api/works')
                 .then(response => {
                     if (!response.ok) {
                         console.error("Deletion failed");
-                    }     
+                    } else {
+                        figure.remove();
+
+                        const figuresInGallery = document.querySelectorAll('.gallery figure[data-id="' + element.id + '"]');
+                        figuresInGallery.forEach(allFigures => {
+                            allFigures.remove()
+                        })
+                    } 
                 })
             })
         })
@@ -270,6 +288,7 @@ fileToLoadingButton.addEventListener("click", () => {
         
 // Bouton pour ajouter un projet à la modale
 
+const gallery = document.querySelector('.gallery')
 const formModal2 = document.querySelector('.formModal2')
 
 formModal2.addEventListener("submit", (event) => {
@@ -295,12 +314,40 @@ formModal2.addEventListener("submit", (event) => {
         },
         body: formData,
     })
-    .then(res => res.json())
-    .then(response => {
-        if (response.ok) {
-            return response.json()
-        } else {
+    .then(res => {
+        if (!res.ok) {
             throw new Error('There was a problem with the fetch operation');
+        } else {
+            return res.json();
         }
     })
+    .then(response => {
+        const newFigureGallery = document.createElement('figure');
+        const newImageGallery = document.createElement('img');
+        const newFigcaptionGallery = document.createElement('figcaption')
+        newImageGallery.src = response.imageUrl;
+        newFigcaptionGallery.innerHTML = response.title;
+        newFigureGallery.appendChild(newImageGallery);
+        newFigureGallery.appendChild(newFigcaptionGallery)
+        gallery.appendChild(newFigureGallery)
+
+        const newFigurePreview = document.createElement('figure')
+        const newImagePreview = document.createElement('img');
+        const newFigcaptionPreview = document.createElement('figcaption')
+        const newInputPreview = document.createElement("input")
+        const iconTrashCan = document.createElement("button");
+
+        newImagePreview.src = response.imageUrl
+        newInputPreview.type = "text";
+        newInputPreview.className = "newInputPreview"
+        newInputPreview.placeholder = "éditer";
+
+        newFigurePreview.appendChild(newImagePreview)
+        newFigurePreview.appendChild(icon)
+        newFigcaptionPreview.appendChild(newInputPreview)
+        newFigurePreview.appendChild(newFigcaptionPreview)
+        galleryManagement.appendChild(newFigurePreview)
+
+        console.log(response)
+    });
 })

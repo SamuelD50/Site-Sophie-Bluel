@@ -21,7 +21,6 @@ openModalButton1.addEventListener("click", showModal);
 openModalButton2.addEventListener("click", showModal);
 
 // Fermer la modale
-
 const spaceToHideAfterLoading = document.querySelector('.space-to-hide-after-loading')
 
 function hideModal() {
@@ -40,7 +39,6 @@ const closeModalButton = document.getElementById("closeModal");
 closeModalButton.addEventListener('click', hideModal);
 
 // Fermer la modale si clic en dehors
-
 modal.addEventListener('click', function(event) {
 
     if (event.target === modal) {
@@ -54,7 +52,7 @@ modal.addEventListener('click', function(event) {
     }
 });
 
-// Affichage par défaut
+// Affichage lorsque l'utilisateur se connecte
 const editionBar = document.querySelector('.edition-bar-wrapper');
 const logIn = document.querySelector('.logIn')
 const logOut = document.querySelector('.logOut')
@@ -99,7 +97,7 @@ returnButton.addEventListener('click', function() {
     checkValidity()
 })
 
-// "Champ requis" 
+// "Champ requis" du formulaire d'ajout
 const tooltip1 = document.querySelector('.tooltip1')
 const tooltip2 = document.querySelector('.tooltip2')
 const tooltip3 = document.querySelector('.tooltip3')
@@ -123,7 +121,6 @@ function checkValidity() {
     }
 
     // Si chaque champ n'est pas rempli, le message "* Champ requis" apparait
-
     if (spaceToHideAfterLoading !== "none") {
         tooltip1.style.display = "flex";
     } else {
@@ -147,6 +144,52 @@ checkValidity()
 photoTitle.addEventListener('keyup', checkValidity)
 selectCategory.addEventListener('change', checkValidity)
 spaceToHideAfterLoading.addEventListener('click', checkValidity)
+
+// Fonction pour supprimer 1 projet
+function deleteProject(element, figure) {
+    fetch('http://localhost:5678/api/works/' + element.id, {
+        method: 'DELETE',
+        headers: {
+            'Accept': '*/*',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            console.error("Deletion failed");
+        } else {
+            figure.remove();
+            
+            const gallery = document.querySelectorAll('.gallery figure[data-id="' + element.id + '"]');
+            gallery.forEach(figure => {
+                figure.remove();
+            });
+        }    
+    })
+}
+
+// Fonction pour supprimer toute la galerie
+function deleteAllGallery(element, figure) {
+    fetch('http://localhost:5678/api/works/' + element.id, {
+        method: 'DELETE',
+        headers: {
+            'Accept': '*/*',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            console.error("Deletion failed");
+        } else {
+            figure.remove();
+
+            const gallery = document.querySelectorAll('.gallery figure[data-id="' + element.id + '"]');
+            gallery.forEach(allFigures => {
+               allFigures.remove()
+            })
+        } 
+    })
+}
 
 // Générer tous les travaux dans l'espace de prévisualisation de la modale 1
 const galleryManagement = document.querySelector(".gallery-management");
@@ -181,60 +224,21 @@ fetch('http://localhost:5678/api/works')
 
             // Etape 3.2 : Suppression de travaux existants
             // Icone poubelle pour supprimer un projet
-
             iconTrashCan.className = "fa-solid fa-trash-can";
             iconTrashCan.addEventListener("click", function(event) {
                 event.preventDefault();
-
-                fetch('http://localhost:5678/api/works/' + element.id, {
-                    method: 'DELETE',
-                    headers: {
-                        'Accept': '*/*',
-                        'Authorization': 'Bearer ' + localStorage.getItem('token')
-                    }
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        console.error("Deletion failed");
-                    } else {
-                        figure.remove();
-                        
-                        const figuresInGallery = document.querySelectorAll('.gallery figure[data-id="' + element.id + '"]');
-                        figuresInGallery.forEach(figure => {
-                            figure.remove();
-                        });
-                    }    
-                })
+                deleteProject(element, figure)
             })
 
             // Bouton pour supprimer la galerie à la fois dans la modale et dans "Mes projets"
             const deleteGallery = document.querySelector('input[value="Supprimer la galerie"]')
-
             deleteGallery.addEventListener("click", function(event) {
                 event.preventDefault()
-                fetch('http://localhost:5678/api/works/' + element.id, {
-                    method: 'DELETE',
-                    headers: {
-                        'Accept': '*/*',
-                        'Authorization': 'Bearer ' + localStorage.getItem('token')
-                    }
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        console.error("Deletion failed");
-                    } else {
-                        figure.remove();
-
-                        const figuresInGallery = document.querySelectorAll('.gallery figure[data-id="' + element.id + '"]');
-                        figuresInGallery.forEach(allFigures => {
-                            allFigures.remove()
-                        })
-                    } 
-                })
+                deleteAllGallery(element, figure)
             })
         })
+
         // Ajout du bouton flèche haut/bas/droite/gauche
-        
         if (preview.length !== 0) {
             const firstFigure = document.querySelector('.gallery-management figure:first-child');
             const iconArrows = document.createElement("button");
@@ -287,7 +291,6 @@ fileToLoadingButton.addEventListener("click", () => {
 })
         
 // Bouton pour ajouter un projet à la modale
-
 const gallery = document.querySelector('.gallery')
 const formModal2 = document.querySelector('.formModal2')
 
@@ -328,6 +331,7 @@ formModal2.addEventListener("submit", (event) => {
         const newFigcaptionGallery = document.createElement('figcaption')
         newImageGallery.src = response.imageUrl;
         newFigcaptionGallery.innerHTML = response.title;
+        newFigureGallery.setAttribute('data-id', response.id)
         newFigureGallery.appendChild(newImageGallery);
         newFigureGallery.appendChild(newFigcaptionGallery)
         gallery.appendChild(newFigureGallery)
@@ -339,6 +343,20 @@ formModal2.addEventListener("submit", (event) => {
         const iconTrashCan = document.createElement("button");
 
         iconTrashCan.className = "fa-solid fa-trash-can";
+        iconTrashCan.addEventListener("click", function(event) {
+            event.preventDefault();
+            element = response
+            console.log(figure.id)
+            deleteProject(element, figure)
+        })
+
+        const deleteGallery = document.querySelector('input[value="Supprimer la galerie"]')
+        deleteGallery.addEventListener("click", function(event) {
+            event.preventDefault()
+            element = response
+            deleteAllGallery(element, figure)
+        })
+
         input.type = "text";
         input.className = "inputGallery";
         input.placeholder = "éditer";

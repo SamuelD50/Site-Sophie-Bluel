@@ -1,3 +1,5 @@
+// Etape 3.1 ; Ajout de la fenêtre modale
+
 // Afficher la modale
 const modal = document.querySelector('.modal');
 const modal1 = document.querySelector('.modal1');
@@ -34,7 +36,7 @@ function hideModal() {
     checkValidity()
 }
 
-const closeModalButton = document.getElementById("xmark");
+const closeModalButton = document.getElementById("closeModal");
 closeModalButton.addEventListener('click', hideModal);
 
 // Fermer la modale si clic en dehors
@@ -83,8 +85,7 @@ logOut.addEventListener("click", function() {
 })
         
 // Flèche pour revenir en arrière. Disponible uniquement sur modale 2
-const returnButton = document.getElementById("arrow");
-console.log(returnButton)
+const returnButton = document.getElementById("return");
 
 returnButton.addEventListener('click', function() {
     modal2.style.display = "none";
@@ -150,8 +151,6 @@ spaceToHideAfterLoading.addEventListener('click', checkValidity)
 // Générer tous les travaux dans l'espace de prévisualisation de la modale 1
 const galleryManagement = document.querySelector(".gallery-management");
 
-let preview = [];
-
 fetch('http://localhost:5678/api/works')
     .then(res => {
         if (res.ok) {
@@ -179,7 +178,8 @@ fetch('http://localhost:5678/api/works')
             figure.appendChild(figcaption);
             figure.appendChild(iconTrashCan);
             galleryManagement.appendChild(figure);
-        
+
+            // Etape 3.2 : Suppression de travaux existants
             // Icone poubelle pour supprimer un projet
 
             iconTrashCan.className = "fa-solid fa-trash-can";
@@ -253,7 +253,9 @@ addingPhoto.addEventListener("click", function() {
     returnButton.style.display = "flex";
 })
 
-// // Bouton pour ajouter la photo, ouvre l'explorateur de fichiers
+// Etape 3.3 : Envoi d'un nouveau projet au back-end via le formulaire de la modale
+
+// Bouton pour ajouter la photo, ouvre l'explorateur de fichiers
 const fileToLoadingButton = document.querySelector('label[for="fileToLoading"]')
 const inputForLoadingImage = document.querySelector('input[class="fileToLoading"]')
 const spaceForAddingPhoto = document.querySelector('.space-for-adding-photo')
@@ -261,8 +263,6 @@ const spaceForAddingPhoto = document.querySelector('.space-for-adding-photo')
 const previewPicture = document.createElement('img')
 previewPicture.classList.add("previewPicture")
 spaceForAddingPhoto.appendChild(previewPicture)
-
-let picture = []
 
 fileToLoadingButton.addEventListener("click", () => {
     inputForLoadingImage.click();
@@ -276,7 +276,7 @@ fileToLoadingButton.addEventListener("click", () => {
             alert('Image larger than 4 mb')
             return;
         }
-
+        
         const fileReader = new FileReader()
         fileReader.addEventListener("load", function() {
             previewPicture.setAttribute("src", fileReader.result)
@@ -321,6 +321,7 @@ formModal2.addEventListener("submit", (event) => {
             return res.json();
         }
     })
+    // Etape 3.4 : Traitement de la réponse de l'API pour affichier dynamiquement la nouvelle image de la modale
     .then(response => {
         const newFigureGallery = document.createElement('figure');
         const newImageGallery = document.createElement('img');
@@ -331,22 +332,23 @@ formModal2.addEventListener("submit", (event) => {
         newFigureGallery.appendChild(newFigcaptionGallery)
         gallery.appendChild(newFigureGallery)
 
-        const newFigurePreview = document.createElement('figure')
-        const newImagePreview = document.createElement('img');
-        const newFigcaptionPreview = document.createElement('figcaption')
-        const newInputPreview = document.createElement("input")
+        const figure = document.createElement("figure");
+        const img = document.createElement("img");
+        const figcaption = document.createElement("figcaption");
+        const input = document.createElement("input");
         const iconTrashCan = document.createElement("button");
 
-        newImagePreview.src = response.imageUrl
-        newInputPreview.type = "text";
-        newInputPreview.className = "newInputPreview"
-        newInputPreview.placeholder = "éditer";
+        iconTrashCan.className = "fa-solid fa-trash-can";
+        input.type = "text";
+        input.className = "inputGallery";
+        input.placeholder = "éditer";
+        img.src = response.imageUrl;
 
-        newFigurePreview.appendChild(newImagePreview)
-        newFigurePreview.appendChild(icon)
-        newFigcaptionPreview.appendChild(newInputPreview)
-        newFigurePreview.appendChild(newFigcaptionPreview)
-        galleryManagement.appendChild(newFigurePreview)
+        figure.appendChild(img);
+        figcaption.appendChild(input);
+        figure.appendChild(figcaption);
+        figure.appendChild(iconTrashCan);
+        galleryManagement.appendChild(figure);
 
         console.log(response)
     });

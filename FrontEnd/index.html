@@ -65,17 +65,17 @@
 			</nav>
 		</header>
 
-		<!-- Ajout de la modale -->
+		<!-- Etape 3 : Ajoutez la modale -->
 		<div class="modal">
             <!-- Icones de navigation à rappeler dynamiquement sur chaque page -->
 			<div class="modal-content">
 				<!-- Icones de navigation à rappeler dynamiquement sur chaque modale -->
 				<div class="navigation-icons">
 					<button class="come-back">
-						<i class="fa-solid fa-arrow-left fa-2xl" id="arrow"></i>
+						<i class="fa-solid fa-arrow-left fa-2xl" id="return"></i>
 					</button>
 					<button class="closing-modal">
-						<i class="fa-solid fa-xmark fa-2xl" id="xmark"></i>
+						<i class="fa-solid fa-xmark fa-2xl" id="closeModal"></i>
 					</button>
 				</div>
 				<!-- Modale permettant de gérer la galerie -->
@@ -97,7 +97,7 @@
 					<form method="post" class="formModal2">
 						<div class="space-for-adding-photo">
 							<div class="space-to-hide-after-loading">
-								<i class="fa-regular fa-image fa-2xl"></i>
+								<i class="fa-regular fa-image fa-2xl" id="inputImage"></i>
 								<input class="fileToLoading" type="file" accept=".jpg, .png, .jpeg" required>
 								<label for="fileToLoading">
 									+ Ajouter photo
@@ -178,9 +178,9 @@
 						Mes Projets
 					</h2>
 					<button class="edition-tool-button">
-						<i class="fa-regular fa-pen-to-square"></i>
+						<i class="fa-regular fa-pen-to-square" id="edition-icon"></i>
 						<span>
-							Mode édition
+							modifier
 						</span>
 					</button>
 				</div>

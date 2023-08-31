@@ -2,8 +2,6 @@
 
 // Etape 1.1 : Récupération des travaux depuis le back-end
 
-let works = [];
-
 fetch('http://localhost:5678/api/works')
     .then(res => {
         if (res.ok) {

@@ -10,8 +10,16 @@
 .authentification form {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
+}
+
+input[type="email"], input[type="password"] {
+    width: 379px;
+    height: 51px;
+    border: none;
+    box-shadow: 0px 4px 14px 0px #00000017;
 }
 
 .authentification .email-range {
@@ -30,30 +38,36 @@
 
 input[value="Se connecter"] {
     margin: 0;
-    padding: 10px 30px;
+    padding: 10px 38px;
     font-size: 14px;
     font-weight: 700;
     border-radius: 60px;
     color: white;
     background-color: #1D6154;
+    border: none;
     font-family: Syne;
     text-align: center;
     cursor: pointer;
 }
 
 .email-range label {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
+    color: #3D3D3D;
 }
 
 .password-range label {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
+    color: #3D3D3D;
 }
 
-.password a[title="Mot de passe oublié"] {
+.forgottenPassword a {
     text-align: center;
-    color: black;
+    color: #3D3D3D;
+    font-family: Work Sans;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .footerLogin nav ul {

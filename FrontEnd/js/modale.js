@@ -78,7 +78,7 @@ logOut.addEventListener("click", function() {
     logOut.style.display = "none"
     editionToolButton.style.display = "none"
     logIn.style.display = "flex"
-    filterBar.style.display = "flex"
+    filterBar.style.display = "flex";
     localStorage.clear();
 })
         
@@ -166,6 +166,9 @@ function deleteProject(element, figure) {
             });
         }    
     })
+    .catch(error => {
+        console.error(error);
+    })
 }
 
 // Fonction pour supprimer toute la galerie
@@ -188,6 +191,9 @@ function deleteAllGallery(element, figure) {
                allFigures.remove()
             })
         } 
+    })
+    .catch(error => {
+        console.error(error);
     })
 }
 
@@ -246,6 +252,9 @@ fetch('http://localhost:5678/api/works')
             firstFigure.appendChild(iconArrows);
         }
     })
+    .catch(error => {
+        console.error(error);
+    })
 
 // Bouton Ajouter une photo qui renvoie sur la modale 2
 
@@ -275,7 +284,6 @@ fileToLoadingButton.addEventListener("click", () => {
         event.preventDefault();
         // Ici je récupére le poids de l'image
         const picture = inputForLoadingImage.files[0]
-        console.log(picture.name)
         if (picture.size > 4 * 1024 * 1024) {
             alert('Image larger than 4 mb')
             return;
@@ -298,16 +306,12 @@ formModal2.addEventListener("submit", (event) => {
     event.preventDefault()
 
     const photoTitleValue = photoTitle.value;
-    const selectCategoryValue = selectCategory.value;
-
-    console.log(selectCategoryValue)
-    console.log(photoTitleValue)
-
+    const selectCategoryValue = selectCategory.value
+    
     const formData = new FormData();
     formData.append("image", inputForLoadingImage.files[0])
     formData.append("title", photoTitleValue)
     formData.append("category", selectCategoryValue)
-    console.log(formData)
 
     fetch('http://localhost:5678/api/works', {
         method: 'POST',
@@ -329,9 +333,11 @@ formModal2.addEventListener("submit", (event) => {
         const newFigureGallery = document.createElement('figure');
         const newImageGallery = document.createElement('img');
         const newFigcaptionGallery = document.createElement('figcaption')
+
         newImageGallery.src = response.imageUrl;
         newFigcaptionGallery.innerHTML = response.title;
         newFigureGallery.setAttribute('data-id', response.id)
+        
         newFigureGallery.appendChild(newImageGallery);
         newFigureGallery.appendChild(newFigcaptionGallery)
         gallery.appendChild(newFigureGallery)
@@ -345,8 +351,7 @@ formModal2.addEventListener("submit", (event) => {
         iconTrashCan.className = "fa-solid fa-trash-can";
         iconTrashCan.addEventListener("click", function(event) {
             event.preventDefault();
-            element = response
-            console.log(figure.id)
+            element = response;
             deleteProject(element, figure)
         })
 
@@ -367,7 +372,8 @@ formModal2.addEventListener("submit", (event) => {
         figure.appendChild(figcaption);
         figure.appendChild(iconTrashCan);
         galleryManagement.appendChild(figure);
-
-        console.log(response)
-    });
+    })
+    .catch(error => {
+        console.error(error);
+    })
 })

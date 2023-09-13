@@ -14,10 +14,6 @@ formInput.addEventListener("submit", (event) => {
     password: document.querySelector('input[name="password"]').value,
     };
 
-    // Test pour savoir si je récupère bien les infos entrées
-    console.log(user.email);
-    console.log(user.password);
-
     // Utilisation de fetch avec la méthode Post
     fetch('http://localhost:5678/api/users/login', {
         method: 'POST',
@@ -36,7 +32,11 @@ formInput.addEventListener("submit", (event) => {
             window.location.href = "index.html";
             // Enregistrer userId et son token en local
         } else {
-            return alert('Error in username or password');  
+            alert('Error in username or password');
         }
     })
-});
+    .catch(error => {
+        alert('Error in username or password');
+        console.error(error);
+    })
+})
